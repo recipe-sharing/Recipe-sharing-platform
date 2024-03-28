@@ -15,12 +15,13 @@ public class Recipe {
     @NotNull
     private long id;
 
+    @Column(name = "name")
     @NotEmpty(message = "Recipe name field cannot be empty")
     @Size(min = 3, max = 100, message = "Recipe name must be from 3 to 100 characters")
     private String recipeName;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -28,18 +29,14 @@ public class Recipe {
     @Size(min = 3, message = "Description cannot be shorter than 5 symbols")
     private String description;
 
-    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "user_id")
     private User user;
 
     @NotNull
     private LocalDate localDate;
 
-    @NotNull
-    private String image;
-
-    public Recipe() {
-        this.localDate = LocalDate.now();
-    }
+    public Recipe() {}
 
     public String getRecipeName() {
         return recipeName;
@@ -61,9 +58,9 @@ public class Recipe {
         return localDate;
     }
 
-    public String getImage() {
-        return image;
-    }
+    //    public String getImage() {
+    //        return image;
+    //    }
 
     public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
@@ -85,9 +82,9 @@ public class Recipe {
         this.localDate = localDate;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+    //    public void setImage(String image) {
+    //        this.image = image;
+    //    }
 
     public long getId() {
         return id;
