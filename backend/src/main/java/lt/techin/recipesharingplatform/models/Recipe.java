@@ -37,7 +37,9 @@ public class Recipe {
     @NotNull
     private String image;
 
-    public Recipe() {}
+    public Recipe() {
+        this.localDate = LocalDate.now();
+    }
 
     public String getRecipeName() {
         return recipeName;
