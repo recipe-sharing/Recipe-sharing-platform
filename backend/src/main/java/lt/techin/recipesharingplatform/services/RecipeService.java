@@ -1,5 +1,6 @@
 package lt.techin.recipesharingplatform.services;
 
+import lt.techin.recipesharingplatform.models.Category;
 import lt.techin.recipesharingplatform.models.Recipe;
 import lt.techin.recipesharingplatform.repositories.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,15 @@ public class RecipeService {
     }
 
     public Recipe saveRecipe(Recipe recipe) {
+        return recipeRepository.save(recipe);
+    }
+
+    public Recipe createRecipe(String recipeName, String description, Category category) {
+        Recipe recipe = new Recipe();
+        recipe.setRecipeName(recipeName);
+        recipe.setDescription(description);
+        recipe.setCategory(category);
+
         return recipeRepository.save(recipe);
     }
 }
