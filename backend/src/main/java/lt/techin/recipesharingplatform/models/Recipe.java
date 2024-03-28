@@ -37,11 +37,7 @@ public class Recipe {
     @NotNull
     private String image;
 
-    public Recipe() {
-        this.category = new Category();
-        this.category.setName("Uncategorized");
-        this.localDate = LocalDate.now();
-    }
+    public Recipe() {}
 
     public String getRecipeName() {
         return recipeName;
