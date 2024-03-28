@@ -20,6 +20,8 @@ public class Recipe {
     private String recipeName;
 
     @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @NotNull
@@ -35,7 +37,11 @@ public class Recipe {
     @NotNull
     private String image;
 
-    public Recipe() {}
+    public Recipe() {
+        this.category = new Category();
+        this.category.setName("Uncategorized");
+        this.localDate = LocalDate.now();
+    }
 
     public String getRecipeName() {
         return recipeName;
